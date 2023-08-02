@@ -1,7 +1,9 @@
 package hr.persistence;
 
+import hr.logging.ConsoleLogger;
 import hr.personnel.Employee;
 import hr.personnel.FullTimeEmployee;
+import hr.personnel.Intern;
 import hr.personnel.PartTimeEmployee;
 
 import java.io.IOException;
@@ -24,7 +26,7 @@ public class EmployeeRepository {
         this.serializer = serializer;
     }
 
-    public List<Employee> findAll(){
+    public List<Employee> findAll() {
 
         // Employees are kept in memory for simplicity
         Employee anna = new FullTimeEmployee("Anna Smith", 2000);
@@ -33,14 +35,17 @@ public class EmployeeRepository {
         Employee steve = new PartTimeEmployee("Steve Jones", 800);
         Employee magda = new PartTimeEmployee("Magda Iovan", 920);
 
-        return Arrays.asList(anna, billy, steve, magda);
+        Employee john = new Intern("John Lee", 300, 10);
+        Employee catherine = new Intern("Catherine Allison", 500, 15);
+
+        return Arrays.asList(anna, billy, steve, magda, john, catherine);
     }
 
     public void save(Employee employee) throws IOException {
         String serializedString = this.serializer.serialize(employee);
 
         Path path = Paths.get(employee.getFullName()
-                .replace(" ","_") + ".rec");
-        Files.write(path, serializedString.toString().getBytes());
+                .replace(" ", "_") + ".rec");
+        Files.write(path, serializedString.getBytes());
     }
 }

@@ -11,8 +11,9 @@ import java.util.List;
 public class SaveEmployeesMain {
     public static void main(String[] args) {
         // Grab employees
-        ConsoleLogger consoleLogger = new ConsoleLogger();
         EmployeeFileSerializer employeeFileSerializer = new EmployeeFileSerializer();
+        ConsoleLogger consoleLogger = new ConsoleLogger();
+
         EmployeeRepository repository = new EmployeeRepository(employeeFileSerializer);
         List<Employee> employees = repository.findAll();
 

@@ -5,6 +5,7 @@ import hr.personnel.Employee;
 public class EmployeeFileSerializer {
     public String serialize(Employee employee) {
         StringBuilder sb = new StringBuilder();
+
         sb.append("### EMPLOYEE RECORD ####");
         sb.append(System.lineSeparator());
         sb.append("NAME: ");
@@ -19,6 +20,7 @@ public class EmployeeFileSerializer {
         sb.append("MONTHLY WAGE: ");
         sb.append(employee.getMonthlyIncome());
         sb.append(System.lineSeparator());
+
         return sb.toString();
     }
 }
