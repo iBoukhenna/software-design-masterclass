@@ -16,39 +16,6 @@ public class FlightPlan {
         this.destinationTime = departureDestination;
     }
 
-    public ValidationResult isValid() {
-        var result = new ValidationResult();
-        if (callSign == null || callSign.equals("")) {
-            result.errors().add("CallSign is empty");
-        }
-
-        if (callSign != null && callSign.length() < 4) {
-            result.errors().add("CallSign length less than 4");
-        }
-
-        if (callSign != null && callSign.length() > 6) {
-            result.errors().add("CallSign length greater than 6");
-        }
-
-        if (departure == null || departure.equals("")) {
-            result.errors().add("Departure not valid");
-        }
-
-        if (destination == null || destination.equals("")) {
-            result.errors().add("Destination not valid");
-        }
-
-        if (destination.equals(departure)) {
-            result.errors().add("Destination and departure must be diffrent");
-        }
-
-        if (departureTime.isAfter(destinationTime)) {
-            result.errors().add("Departure time after destination time");
-        }
-
-        return result;
-    }
-
     public String getCallSign() {
         return callSign;
     }

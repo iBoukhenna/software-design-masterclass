@@ -31,8 +31,12 @@ public class Main {
 
         );
 
+        var validator = new FlightPlanValidator();
+        validator.registerRule(new CallSignNotEmpty());
+        validator.registerRule(new DepartureDifferentFromDestination());
+
         for (var i = 0; i < flightPlans.size(); i++) {
-            System.out.println("Flight plan " + i + " -> " + flightPlans.get(i).isValid());
+            System.out.println("Flight plan " + i + " -> " + validator.validate(flightPlans.get(i)));
         }
     }
 }
