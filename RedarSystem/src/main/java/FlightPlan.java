@@ -38,6 +38,14 @@ public class FlightPlan {
             result.errors().add("Destination not valid");
         }
 
+        if (destination.equals(departure)) {
+            result.errors().add("Destination and departure must be diffrent");
+        }
+
+        if (departureTime.isAfter(destinationTime)) {
+            result.errors().add("Departure time after destination time");
+        }
+
         return result;
     }
 
