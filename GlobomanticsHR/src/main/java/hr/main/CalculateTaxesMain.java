@@ -1,6 +1,7 @@
 package hr.main;
 
 import hr.logging.ConsoleLogger;
+import hr.persistence.EmployeeFileRepository;
 import hr.persistence.EmployeeFileSerializer;
 import hr.persistence.EmployeeRepository;
 import hr.personnel.Employee;
@@ -17,7 +18,7 @@ public class CalculateTaxesMain {
         // Create dependencies
         ConsoleLogger consoleLogger = new ConsoleLogger();
         EmployeeFileSerializer employeeFileSerializer = new EmployeeFileSerializer();
-        EmployeeRepository repository = new EmployeeRepository(employeeFileSerializer);
+        EmployeeRepository repository = new EmployeeFileRepository(employeeFileSerializer);
 
         // Grab employees
         List<Employee> employees = repository.findAll();
