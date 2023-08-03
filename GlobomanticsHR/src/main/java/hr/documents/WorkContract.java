@@ -1,6 +1,9 @@
 package hr.documents;
 
-public class WorkContract implements ExportableDocument {
+public class WorkContract implements
+        ExportableJson,
+        ExportableText,
+        ExportablePdf {
     private String content;
 
     public WorkContract(String content) {
@@ -8,20 +11,23 @@ public class WorkContract implements ExportableDocument {
     }
 
     @Override
-    public String toTxt() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("CONTENT: ").append(this.content);
-        sb.append(System.lineSeparator());
-        return sb.toString();
-    }
-
-    @Override
     public byte[] toPdf() {
+        // Test implementation, in reality this would
+        // be more complex
         return content.getBytes();
     }
 
     @Override
     public String toJson() {
-        return "{\"content\":\"" + content + "\"}";
+        // Test implementation, in reality this would
+        // be more complex
+        return "{'content':'" + this.content + "'}";
+    }
+
+    @Override
+    public String toTxt() {
+        // Test implementation, in reality this would
+        // be more complex
+        return this.content;
     }
 }
