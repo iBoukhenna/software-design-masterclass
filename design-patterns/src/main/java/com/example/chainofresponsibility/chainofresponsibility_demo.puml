@@ -1,0 +1,40 @@
+class ChainOfResponsibilityDemo {
+}
+
+abstract class Handler {
+ - Handler successor
+ + {abstract} handleRequest(Request request)
+}
+
+class Director {
+ + handleRequest(Request request)
+}
+
+class VP {
+ + handleRequest(Request request)
+}
+
+class CEO {
+ + handleRequest(Request request)
+}
+
+class Request {
+ - RequestType requestType
+ - double amount
+}
+
+enum RequestType {
+    CONFERENCE
+    PURCHASE
+}
+
+Client ..> Handler
+
+Handler <|-- Director
+Handler <|-- CEO
+Handler <|-- VP
+
+Handler --o Director
+
+Request --o RequestType
+
