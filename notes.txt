@@ -1,0 +1,214 @@
+
+Benefits of SOLID Code
+- Easy to understand a,d reason about
+- Changes are faster and have minimal risk level
+- Highly maintainable over long periods of time
+- Cost effective
+
+Ways to keep your architecture clean
+- Constant refactoring
+- Design patterns
+- Unit testing
+
+Code rigidity and fragility are symptoms of high technical debt
+
+
+
+
+
+Signle Responsibility Principle
+Every function class or module should have one and only one reason to change
+
+Implementing SRP
+Identify the reasons to change/responsibilities in a give component
+Reduce them to one by Refactor : 
+    1. Move other responsibilities to separate methods
+    2. Create new classes and move responsibilities there
+    3. Create more coherent packages
+    4. Use events to limit dependencies
+
+
+
+
+
+Open Closed Principale
+Classes functions and modules should be closed for modification but open for extension
+
+Implementing OCP
+Inheritance and design patterns are effective ways to add features without modifiying existing components
+
+
+
+
+
+Liskov Substitution Principale
+If S is subtype of T then objects of type T in a program may be replaced with objects of type S without modifiying the functionality of the program
+Any object of a type must be substitutable by objects of a derived typed without altering the correctness of that program
+
+Apply the LSP in a Proactive Way
+Make sure that a derived type can substitute its base type completely
+Keep base classes small and focused
+Keep interfaces lean
+
+    1. Case "Empty Methods/Functions"
+    class Bird {
+        public void fly (int altitude) {...}
+    }
+    class Ostrich extends Bird {
+        public void fly (int altitude) { throw new RuntimeException("Ostrich can't fly"); }
+    } 
+    1. Fixing by "Eliminate Inheritance" : fix it by breaking relationship
+    class Bird {
+        public void fly (int altitude) {...}
+    }
+    class Ostrich {
+        // Ostrich data and capabilities. No fly method
+    } 
+    2. case "Partially Implemented Interface"
+    interface Account {
+        void processLocalTransfer(double amount);
+        void processInternationalTransfer(double amount);
+    }
+    class SchoolAccount implements Account {
+        void processLocalTransfer(double amount) {}
+        void processInternationalTransfer(double amount) { throw new RuntimeException("Not Implemented"); }
+    }
+    2. Fixing by "Split Large Abstract Components into Smaller Ones" : fix it by implement new interface LocalAccount
+    interface LocalAccount {
+        void processLocalTransfer(double amount);
+    }
+    class SchoolAccount implements LocalAccount {
+        void processLocalTransfer(double amount) {}
+    }
+    3. case : "Type Checking"
+    class Task {
+        public void setInProgress() {...}
+    }
+    class BugFix extends Task {
+        public void initializeBugDescription() {...}
+    }
+    for (Task t : tasks) {
+        if (t instanceof BugFix) {
+            BugFix bf = (BugFix) t;
+            bf.initializeBugDescription();
+        }
+        t.setInProgress();
+    }
+    3. Fixing it with "Tell Don't Ask Principale" : fix it by overriding the methode setInProgress in the BugFix and add the specefic action 
+    class Task {
+        public void setInProgress() {...}
+    }
+    class BugFix extends Task {
+        public void initializeBugDescription() {...}
+
+        @Override
+        public void setInProgress() {
+            this.initializeBugDescription();
+            super.setInProgress();
+        }
+    }
+    for (Task t : tasks) {
+        t.setInProgress();
+    }
+
+
+
+
+
+Interface Segregation Principale
+Clients should not be forced to depend on methods that they do not use
+
+Apply the ISP
+Identify "Fat" interfaces
+Keep interfaces small => the classes that implement them have a higher chance to fully substitute the interface
+Keep interfaces small => the classes that implement them are more focused and tend to have a single purpose
+Your own code : Breaking inter is pretty easy and safe due to the possibility to implement as many interface as we want
+External legacy code : You can't control the interfces in the external code, so you use design patterns like "Adapter"
+
+    1. Case "Interfaces with many methods" : Throwing Exceptions
+    interface LoginService {
+        void signIn();
+        void signOut();
+        void updateRememberMeCookie();
+        void getUserDetails();
+        void setSessionExpiration(int seconds);
+        void validationToken(Jwt token);
+        ...
+    }
+    class GoogleLoginService implements LoginService {
+        ...
+        public void updateRememberMeCookie () { throw new UnsuppotedOperationException(); }
+        public void setSessionExpiration (int seconds) { throw new UnsuppotedOperationException(); }
+    } 
+    1. Fixing by "Split Interface"
+    2. case "Interfaces with low cohesion" : Increased coupling and a lot of responsibilities
+    interface ShoppingCart {
+        void addItem(Item item);
+        void removeItem(Item item);
+        void processPayment();
+        void checkItemInStock(Item item);
+    }
+    class ShoppingCartImpl implements ShoppingCart {
+        ...
+        public void processPayment() { 
+            PaymentService ps = new PaymentService();
+            ps.pay(this.totalAmount);
+            UserService us = new UserService();
+            User user = us.getUserDetails();
+            EmailService em = new EmailService();
+            es.notify(user);
+        }
+    }
+    2. Fixing by "Split Interface"
+    3. case "Not Just About Interfaces" : "Empty Methods/Functions"
+    public abstract class Account {
+        abstract double getBalance();
+        abstract void processLocalTransfer(double amount);
+        abstract void processInternationalTransfer(double amount);
+    }
+    class SchoolAccount extends Account {
+        public double getBalance() {}
+        public void processLocalTransfer(double amount) {}
+        public void processInternationalTransfer(double amount) { throw new RuntimeException("Not Implemented"); }
+    }
+    3. Fixing by "Split Large Abstract Components into Smaller Ones" : fix it by To Three Lean Interfaces
+    interface BaseAccount {
+        abstract double getBalance();
+    }
+    interface IntlMoneyTransferCapability {
+        void processInternationalTransfer(double amount);
+    }
+    interface LocalMoneyTransferCapability {
+        void processLocalTransfer(double amount);
+    }
+    // client cohesion
+    class SchoolAccount implements LocalMoneyTransferCapability, BaseAccount {
+        abstract double getBalance();
+        void processLocalTransfer(double amount) {}
+    }
+    // Interface Reuse
+    class InternationalLoanService implements LocalMoneyTransferCapability {
+        void processInternationalTransfer(double amount) {}
+    }
+
+
+
+
+Dependency Inversion Principale
+High level modules should not depend on low level modules both should depend on abstractions
+Abstractions should not depend on details, Details should depend upon abstraction
+A technique that allows the creation of dependent objects outisde of a class and provides those objects to a class
+
+High level modules: 
+Modules created to solve real problems and use cases
+They are more abstract and map to the bussiness domain
+What the software should do
+
+Low level modules:
+Contain implementation details that are required to execute the business policies
+They are considered the plumbing or internal of an application
+How the software should do various tasks
+
+
+
+
