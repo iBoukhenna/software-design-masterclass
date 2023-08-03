@@ -1,3 +1,4 @@
+package ocp;
 public class DepartureDifferentFromDestination implements ValidationRule {
 
     @Override
