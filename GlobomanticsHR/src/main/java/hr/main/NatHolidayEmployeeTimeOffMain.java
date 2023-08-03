@@ -2,7 +2,7 @@ package hr.main;
 
 import hr.logging.ConsoleLogger;
 import hr.persistence.EmployeeFileSerializer;
-import hr.persistence.EmployeeRepository;
+import hr.persistence.EmployeeFileRepository;
 import hr.personnel.Employee;
 import hr.personnel.FullTimeEmployee;
 
@@ -13,7 +13,7 @@ public class NatHolidayEmployeeTimeOffMain {
         // Create dependencies
         ConsoleLogger consoleLogger = new ConsoleLogger();
         EmployeeFileSerializer employeeFileSerializer = new EmployeeFileSerializer();
-        EmployeeRepository repository = new EmployeeRepository(employeeFileSerializer);
+        EmployeeFileRepository repository = new EmployeeFileRepository(employeeFileSerializer);
 
         // Grab employees
         List<Employee> employees = repository.findAll();

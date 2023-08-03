@@ -1,9 +1,5 @@
 package hr.main;
 
-import hr.logging.ConsoleLogger;
-import hr.persistence.EmployeeFileSerializer;
-import hr.persistence.EmployeeRepository;
-import hr.personnel.Employee;
 import hr.personnel.ServiceLicenseAgreement;
 import hr.personnel.Subcontractor;
 

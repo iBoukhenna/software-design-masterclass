@@ -2,7 +2,7 @@ package hr.main;
 
 import hr.logging.ConsoleLogger;
 import hr.persistence.EmployeeFileSerializer;
-import hr.persistence.EmployeeRepository;
+import hr.persistence.EmployeeFileRepository;
 import hr.personnel.Employee;
 
 import java.io.IOException;
@@ -14,7 +14,7 @@ public class SaveEmployeesMain {
         EmployeeFileSerializer employeeFileSerializer = new EmployeeFileSerializer();
         ConsoleLogger consoleLogger = new ConsoleLogger();
 
-        EmployeeRepository repository = new EmployeeRepository(employeeFileSerializer);
+        EmployeeFileRepository repository = new EmployeeFileRepository(employeeFileSerializer);
         List<Employee> employees = repository.findAll();
 
         // Save all
