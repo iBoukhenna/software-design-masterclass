@@ -1,10 +1,15 @@
 package isp;
-import java.util.List;
 
 import static java.lang.System.out;
-import static java.util.List.of;
 
 public class Main {
     public static void main(String[] args) {
+        var radarLabel = new StandardDisplayAircraftLabel(
+                "RO1234",
+                new Coordinate(45, 24, 9000),
+                100
+        );
+
+        out.println(radarLabel.getDisplayValue());
     }
 }

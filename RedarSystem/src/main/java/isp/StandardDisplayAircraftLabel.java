@@ -1,9 +1,8 @@
 package isp;
 
 import java.text.MessageFormat;
-import java.util.List;
 
-public class StandardDisplayAircraftLabel implements AircraftLabel {
+public class StandardDisplayAircraftLabel implements AircraftLabel, LabelWithMouseInteraction {
     private final String callSign;
     private Coordinate position;
     private int speedInKnots;
@@ -17,7 +16,10 @@ public class StandardDisplayAircraftLabel implements AircraftLabel {
 
     @Override
     public String getDisplayValue() {
-        return MessageFormat.format("{0} @ {1} ft - {2} knots", callSign, position.alt(), speedInKnots);
+        return MessageFormat.format("{0} @ {1} ft - {2} knots",
+                callSign,
+                position.alt(),
+                speedInKnots);
     }
 
     @Override
@@ -34,15 +36,4 @@ public class StandardDisplayAircraftLabel implements AircraftLabel {
     public void onLabelDoubleClick() {
         this.currentColor = getSelectedLabelColor();
     }
-
-    @Override
-    public void onLabelTouched() {
-        // system does not support touch gestures
-    }
-
-    @Override
-    public void issueCommand(String id, List<String> commandArgs) {
-        // system does not support touch gestures
-    }
-
 }
