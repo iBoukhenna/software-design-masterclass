@@ -1,9 +1,5 @@
 package hr.main;
 
-import hr.logging.ConsoleLogger;
-import hr.persistence.EmployeeFileSerializer;
-import hr.persistence.EmployeeRepository;
-import hr.personnel.Employee;
 import hr.personnel.ServiceLicenseAgreement;
 import hr.personnel.Subcontractor;
 
@@ -11,11 +7,6 @@ import java.util.List;
 
 public class ApproveSLAMain {
     public static void main(String[] args) {
-        // Create dependencies
-        ConsoleLogger consoleLogger = new ConsoleLogger();
-        EmployeeFileSerializer employeeFileSerializer = new EmployeeFileSerializer();
-        EmployeeRepository repository = new EmployeeRepository(employeeFileSerializer);
-
         // Define SLA
         int minTimeOffPercent = 98;
         int maxResolutionDays = 2;
@@ -24,13 +15,13 @@ public class ApproveSLAMain {
                 maxResolutionDays);
 
         // Grab subcontractors
-        List<Employee> subcontractors = repository.findAll();
+        Subcontractor subcontractor1 = new Subcontractor("Rebekah Jackson", "rebekeh-jackson@abc.com", 3000, 15);
+        Subcontractor subcontractor2 = new Subcontractor("Harry Fitz", "harryfitz@def.com", 3000, 15);
 
-        for (Employee e : subcontractors){
-            if(e instanceof  Subcontractor){
-                Subcontractor s = (Subcontractor)e;
-                s.approveSLA(companySla);
-            }
+        List<Subcontractor> subcontractors = List.of(subcontractor1, subcontractor2);
+
+        for (Subcontractor subcontractor : subcontractors) {
+            subcontractor.approveSLA(companySla);
         }
     }
 }
