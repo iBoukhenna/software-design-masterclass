@@ -1,0 +1,63 @@
+class FactoryDemo {
+}
+
+interface WebsiteFactory {
+ + getWebsite(WebsiteType siteType)
+}
+
+enum WebsiteType {
+ BLOG
+ SHOP
+}
+
+class Website {
+ - List<Page> pages
+ + createWebsite()
+}
+
+class Blog {
+ + createWebsite()
+}
+
+class Shop {
+ + createWebsite()
+}
+
+abstract class Page {
+}
+
+class AboutPage {
+}
+
+class CartPage {
+}
+
+class CommentPage {
+}
+
+class ContractPage {
+}
+
+class ItemPage {
+}
+
+class PostPage {
+}
+
+class SearchPage {
+}
+
+FactoryDemo --> WebsiteFactory
+
+WebsiteFactory <|-- Website
+
+Website <|-- Blog
+Website <|-- Shop
+
+Page <|-- AboutPage
+Page <|-- CartPage
+Page <|-- CommentPage
+Page <|-- ContractPage
+Page <|-- ItemPage
+Page <|-- PostPage
+Page <|-- SearchPage

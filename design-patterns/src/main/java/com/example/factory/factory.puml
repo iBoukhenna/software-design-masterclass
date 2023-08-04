@@ -1,0 +1,14 @@
+class Client {
+}
+
+interface Factory {
+ + factoryMethod()
+}
+
+class ConcreteObject {
+ + factoryMethod()
+}
+
+Client --> Factory
+
+Factory <|-- ConcreteObject
