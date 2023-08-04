@@ -1,0 +1,30 @@
+class CompositeMenuDemo {
+}
+
+class MenuComponent {
+ - String name
+ - String url
+ - List<MenuComponent> menuComponents 
+ + add(MenuComponent menuComponent)
+ + remove(MenuComponent menuComponent)
+ + print(MenuComponent menuComponent)
+ + abstract toString()
+}
+
+class Menu {
+ + add(MenuComponent menuComponent)
+ + remove(MenuComponent menuComponent)
+ + String toString()
+}
+
+class MenuItem {
+ + String toString()
+}
+
+CompositeMenuDemo --> MenuComponent
+
+MenuComponent <|-- Menu
+MenuComponent <|-- MenuItem
+
+Menu " 1 " o-- "0..*" MenuComponent
+

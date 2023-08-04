@@ -1,0 +1,25 @@
+class Client {
+}
+
+class Component {
+ + operation()
+}
+
+class Composite {
+ + operation()
+ + add()
+ + remove()
+ + getChild()
+}
+
+class Leaf {
+ + operation()
+}
+
+Client --> Component
+
+Component <|-- Composite
+Component <|-- Leaf
+
+Composite " 1 " o-- "0..*" Component
+
