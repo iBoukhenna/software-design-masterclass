@@ -1,0 +1,27 @@
+class Client {
+}
+
+interface Aggregate {
+ + {abstract} iterator()
+}
+
+class ConcreteAggregate {
+ + iterator()
+}
+
+interface Iterator {
+ + hasNext()
+ + next()
+}
+
+class ConcreteIterator {
+ + hasNext()
+ + next()
+}
+
+Client --> ConcreteAggregate
+
+ConcreteAggregate --> ConcreteIterator
+
+Aggregate <|-- ConcreteAggregate
+Iterator <|-- ConcreteIterator

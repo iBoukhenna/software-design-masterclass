@@ -1,0 +1,27 @@
+class IteratorDemo {
+}
+
+interface Iterable {
+ + {abstract} iterator()
+}
+
+class BikeRepository {
+ + iterator()
+}
+
+interface Iterator {
+ + hasNext()
+ + next()
+}
+
+class BikeIterator {
+ + hasNext()
+ + next()
+}
+
+IteratorDemo --> BikeRepository
+
+BikeRepository --> BikeIterator
+
+Iterable <|-- BikeRepository
+Iterator <|-- BikeIterator
