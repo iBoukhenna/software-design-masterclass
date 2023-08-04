@@ -1,0 +1,38 @@
+class PrototypeDemo {
+}
+
+interface Cloneable {
+ + Clone()
+ + DeepCopy()
+}
+
+abstract class Item {
+ - String title
+ - double price
+ - String url
+ + Clone()
+ + DeepCopy()
+}
+
+abstract class Registry {
+ - Map<String, Item> items
+ + Registry()
+ + createItem()
+ - loadItems()
+}
+
+abstract class Book {
+ - int numberOfPages
+}
+
+abstract class Movie {
+ - String runtime
+}
+
+PrototypeDemo --> Registry
+Item --> Registry
+
+Cloneable <|-- Item
+
+Item <|-- Movie
+Item <|-- Book
