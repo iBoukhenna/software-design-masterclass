@@ -1,0 +1,52 @@
+class VisitorDemo {
+}
+
+interface AtvPartVisitor {
+ + visit(Wheel wheel)
+ + visit(Fender fender)
+ + visit(Oil oil)
+ + visit(PartsOrder partsOrder)
+}
+
+class AtvPartsDisplayVisitor {
+ + visit(Wheel wheel)
+ + visit(Fender fender)
+ + visit(Oil oil)
+ + visit(PartsOrder partsOrder)
+}
+
+class AtvPartsShippingVisitor {
+ - double shippingAmount
+ + visit(Wheel wheel)
+ + visit(Fender fender)
+ + visit(Oil oil)
+ + visit(PartsOrder partsOrder)
+}
+
+interface AtvPart {
+ + accept(AtvPartVisitor visitor)
+}
+
+class Wheel {
+ + accept(AtvPartVisitor visitor)
+}
+class Fender {
+ + accept(AtvPartVisitor visitor)
+}
+class Oil {
+ + accept(AtvPartVisitor visitor)
+}
+class PartsOrder {
+ + accept(AtvPartVisitor visitor)
+}
+
+
+VisitorDemo --> AtvPartVisitor
+VisitorDemo --> AtvPart
+
+AtvPartVisitor <|-- AtvPartsDisplayVisitor
+AtvPartVisitor <|-- AtvPartsShippingVisitor
+AtvPart <|-- Wheel
+AtvPart <|-- Fender
+AtvPart <|-- Oil
+AtvPart <|-- PartsOrder

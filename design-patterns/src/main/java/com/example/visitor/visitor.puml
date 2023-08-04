@@ -1,0 +1,25 @@
+class Client {
+}
+
+interface Visitor {
+ + visit(ConcreteElement concreteElement)
+}
+
+class ConcreteVisitor {
+ + visit(ConcreteElement concreteElement)
+}
+
+interface Element {
+ + accept(Visitor Visitor)
+}
+
+class ConcreteElement {
+ + accept(Visitor visitor)
+}
+
+
+Client --> Visitor
+Client --> Element
+
+Visitor <|-- ConcreteVisitor
+Element <|-- ConcreteElement
