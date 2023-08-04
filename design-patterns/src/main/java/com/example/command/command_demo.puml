@@ -1,0 +1,29 @@
+class CommandDemo {
+}
+
+class Light {
+ + on()
+ + off()
+}
+
+class OnCommand {
+ - Light light
+ + execute()
+}
+
+interface Command {
+ + execute()
+}
+
+class Switch {
+ + storeAndExecute(Command command)
+}
+
+CommandDemo --> Light
+CommandDemo ..> OnCommand
+
+Light --> OnCommand
+
+Command <|-- OnCommand
+
+Switch o--> Command 

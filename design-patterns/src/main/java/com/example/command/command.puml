@@ -1,0 +1,27 @@
+class Client {
+}
+
+class Receiver {
+ + action()
+}
+
+class ConcreteCommand {
+ - state
+ + execute()
+}
+
+interface Command {
+ + execute()
+}
+
+class Invoker {
+}
+
+Client --> Receiver
+Client ..> ConcreteCommand
+
+Receiver --> ConcreteCommand
+
+Command <|-- ConcreteCommand
+
+Invoker o--> Command 
