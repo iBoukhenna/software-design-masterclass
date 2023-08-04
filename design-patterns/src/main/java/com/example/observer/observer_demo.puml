@@ -1,0 +1,44 @@
+class ObserverDemo {
+}
+
+abstract class Observer {
+ - Subject subject
+ + {abstract} update()
+}
+
+class TabletClient {
+ - observerState
+ + addMessage(String message)
+ + update()
+}
+
+class PhoneClient {
+ - observerState
+ + addMessage(String message)
+ + update()
+}
+
+class Subject {
+ - List<Observer> observers = new ArrayList<>();
+ + {abstract} setState
+ + {abstract} getState
+ + attach(Observer observer)
+ + detach(Observer observer)
+ + notify()
+}
+
+class MessageStream {
+ - Deque<String> messageHistory
+ + getState()
+ + setState()
+}
+
+ObserverDemo --> Observer
+
+Observer <|-- TabletClient
+Observer <|-- PhoneClient
+Subject <|-- MessageStream
+
+Observer <-- Subject
+TabletClient --> MessageStream
+PhoneClient --> MessageStream

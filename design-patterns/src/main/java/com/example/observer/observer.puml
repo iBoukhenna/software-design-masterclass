@@ -1,0 +1,31 @@
+class Client {
+}
+
+class Observer {
+ + update()
+}
+
+class ConcreteObserver {
+ - observerState
+ + update()
+}
+
+class Subject {
+ + attach(Observer observer)
+ + detach(Observer observer)
+ + notify()
+}
+
+class ConcreteSubject {
+ - state
+ + getState()
+ + setState()
+}
+
+Client --> Observer
+
+Observer <|-- ConcreteObserver
+Subject <|-- ConcreteSubject
+
+Observer <-- Subject
+ConcreteObserver --> ConcreteSubject
