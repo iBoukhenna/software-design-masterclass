@@ -3,8 +3,10 @@ class DbSingletonDemo {
 
 class DbSingleton {
  - {static} DbSingleton instance;
+ - {static} Connection conn;
  - DbSingleton()
- + getInstance()
+ + {static} getInstance()
+ + getConnection()
 }
 
 DbSingletonDemo --> DbSingleton
