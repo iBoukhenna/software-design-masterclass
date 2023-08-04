@@ -1,0 +1,15 @@
+class Client {
+}
+
+class Builder {
+ + buildPart()
+}
+
+class ConcreteBuilder {
+ + buildPart()
+ + getResult()
+}
+
+Client --> Builder
+
+Builder <|-- ConcreteBuilder

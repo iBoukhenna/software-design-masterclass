@@ -1,0 +1,23 @@
+class BuilderLunchOrderDemo {
+}
+
+class Builder {
+ + Builder()
+ + build()
+ + bread()
+ + condiments()
+ + dressing()
+ + meat()
+}
+
+class LunchOrder {
+ - LunchOrder(Builder)
+ - {final} String bread
+ - {final} String condiments
+ - {final} String dressing
+ - {final} String meat  
+}
+
+BuilderLunchOrderDemo --> Builder
+
+Builder <|-- LunchOrder
