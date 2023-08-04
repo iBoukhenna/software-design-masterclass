@@ -1,0 +1,27 @@
+class Client {
+}
+
+abstract class AbstractExpression {
+ + {abstract} interpret(Context context)
+}
+
+class TerminalExpression {
+ + interpret(Context context)
+}
+
+class NonterminalExpression {
+ + interpret(Context context)
+}
+
+class Context {
+}
+
+Client --> Context
+
+Client --> AbstractExpression
+
+AbstractExpression <|-- TerminalExpression
+AbstractExpression <|-- NonterminalExpression
+
+AbstractExpression <--o NonterminalExpression
+

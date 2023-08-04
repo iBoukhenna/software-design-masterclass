@@ -1,0 +1,36 @@
+class InterpreterDemo {
+}
+
+abstract class Expression {
+ + {abstract} interpret(Context context)
+}
+
+class TerminalExpression {
+ - String data
+ + interpret(Context context)
+}
+
+class AndExpression {
+ - Expression expression
+ - Expression expression
+ + interpret(Context context)
+}
+
+class OrExpression {
+ - Expression expression
+ - Expression expression
+ + interpret(Context context)
+}
+
+class Context {
+}
+
+Client --> Context
+
+Client --> Expression
+
+Expression <|-- TerminalExpression
+Expression <|-- OrExpression
+Expression <|-- AndExpression
+
+Expression <--o OrExpression
