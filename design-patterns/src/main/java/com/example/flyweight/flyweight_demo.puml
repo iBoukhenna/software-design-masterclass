@@ -1,0 +1,36 @@
+class FlyweightInventoryDemo {
+}
+
+class InventorySystem {
+ - Catalog catalog
+ - List<Order> orders
+ + takeOrder(String itemName, int orderNumber)
+ + process()
+ + report()
+}
+
+class Catalog {
+ - Map<String, Item> items
+ + lookup(String itemName)
+ + totalItemsMade()
+}
+
+class Order {
+ - int orderNumber;
+ - Item item;
+ + processOrder()
+}
+
+class Item {
+ - String name
+ + toString()
+}
+
+FlyweightInventoryDemo --> InventorySystem
+
+InventorySystem --> Catalog
+InventorySystem --> Order
+
+Catalog <--o Item
+Order --|> Item
+

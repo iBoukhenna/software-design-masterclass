@@ -1,0 +1,26 @@
+class Client {
+}
+
+class FlyweightClient {
+}
+
+class FlyweightFactory {
+ + getFlyweight(key)
+}
+
+class ConcreteFlyweight {
+ + operation()
+}
+
+class Flyweight {
+ + operation()
+}
+
+Client --> FlyweightClient
+
+FlyweightClient --> FlyweightFactory
+FlyweightClient --> ConcreteFlyweight
+
+FlyweightFactory <--o Flyweight
+ConcreteFlyweight --|> Flyweight
+
