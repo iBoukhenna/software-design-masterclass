@@ -1,0 +1,25 @@
+class Client {
+}
+
+abstract class Strategy {
+ + {abstract} execute()
+}
+
+class ConcreteStrategyA {
+ + execute()
+}
+
+class ConcreteStrategyB {
+ + execute()
+}
+
+class Context {
+ + request()
+}
+
+Client --> Context
+
+State <|-- ConcreteStrategyA
+State <|-- ConcreteStrategyB
+
+Context o--> Strategy

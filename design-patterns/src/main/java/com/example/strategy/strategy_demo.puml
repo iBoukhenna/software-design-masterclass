@@ -1,0 +1,29 @@
+class StrategyDemo {
+}
+
+abstract class ValidationStrategy {
+ + {abstract} isValid(CreditCard creditCard);
+}
+
+class AmexStrategy {
+ + isValid(CreditCard creditCard);
+}
+
+class VisaStrategy {
+ + isValid(CreditCard creditCard);
+}
+
+class CreditCard {
+ - String number
+ - String date
+ - String cvv
+ - ValidationStrategy strategy
+ + isValid()
+}
+
+StrategyDemo --> CreditCard
+
+State <|-- AmexStrategy
+State <|-- VisaStrategy
+
+Context o--> ValidationStrategy
