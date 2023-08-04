@@ -10,6 +10,9 @@ public class CommandDemo {
 		Light kitchenLight = new Light();
 		Switch lightSwitch = new Switch(); 
 		
+		Command toggleCommand = new ToggleCommand(bedroomLight);
+		lightSwitch.storeAndExecute(toggleCommand);
+		
 		List<Light> lights = new ArrayList<>();
 		lights.add(kitchenLight);
 		lights.add(bedroomLight);

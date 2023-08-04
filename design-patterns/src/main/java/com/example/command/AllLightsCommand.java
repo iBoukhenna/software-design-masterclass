@@ -13,7 +13,9 @@ public class AllLightsCommand implements Command {
 	@Override
 	public void execute() {
 		for (Light light : lights) {
-			light.toggle();
+			if (light.isOn()) {
+				light.toggle();
+			}
 		}
 	}
 
