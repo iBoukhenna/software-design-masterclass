@@ -2,11 +2,18 @@ class CommandDemo {
 }
 
 class Light {
+ - boolean isOn
+ + toggle() 
  + on()
  + off()
 }
 
 class OnCommand {
+ - Light light
+ + execute()
+}
+
+class ToggleCommand {
  - Light light
  + execute()
 }
@@ -21,9 +28,12 @@ class Switch {
 
 CommandDemo --> Light
 CommandDemo ..> OnCommand
+CommandDemo ..> ToggleCommand
 
 Light --> OnCommand
+Light --> ToggleCommand
 
 Command <|-- OnCommand
+Command <|-- ToggleCommand
 
 Switch o--> Command 
