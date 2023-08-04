@@ -1,0 +1,35 @@
+class StateDemo {
+}
+
+class State {
+ + handle()
+}
+
+class FanHighState {
+ + handle()
+}
+
+class FanLowState {
+ + handle()
+}
+
+class FanMedState {
+ + handle()
+}
+
+class FanOffState {
+ + handle()
+}
+
+class Fan {
+ + pullChain()
+}
+
+StateDemo --> Fan
+
+State <|-- FanHighState
+State <|-- FanMedState
+State <|-- FanLowState
+State <|-- FanOffState
+
+Fan o--> State

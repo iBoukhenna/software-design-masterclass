@@ -1,0 +1,25 @@
+class Client {
+}
+
+class State {
+ + handle()
+}
+
+class ConcreteStateA {
+ + handle()
+}
+
+class ConcreteStateB {
+ + handle()
+}
+
+class Context {
+ + request()
+}
+
+Client --> Context
+
+State <|-- ConcreteStateA
+State <|-- ConcreteStateB
+
+Context o--> State
