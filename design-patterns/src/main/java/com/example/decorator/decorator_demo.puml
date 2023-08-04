@@ -1,0 +1,34 @@
+class DecoratorSandwichDemo {
+}
+
+interface Sandwich {
+ + make()
+}
+
+class SimpleSandwich {
+ + make()
+}
+
+class SandwichDecorator {
+ - Sandwich sandwich
+ + make()
+}
+
+class MeatDecorator {
+ + make()
+ + addMeat()
+}
+
+class DressingDecorator {
+ + make()
+ + addDressing()
+}
+
+DecoratorSandwichDemo --> Sandwich
+Sandwich <|-- SimpleSandwich
+Sandwich <|-- SandwichDecorator
+
+SandwichDecorator <|-- MeatDecorator
+SandwichDecorator <|-- DressingDecorator
+
+Sandwich --o SandwichDecorator

@@ -1,0 +1,27 @@
+class Client {
+}
+
+interface Component {
+ + operation()
+}
+
+class ConcreteComponent {
+ + operation()
+}
+
+class Decorator {
+ - Component
+ + operation()
+}
+
+class ConcreteDecorator {
+ + operation()
+}
+
+Client --> Component
+Component <|-- ConcreteComponent
+Component <|-- Decorator
+
+Decorator <|-- ConcreteDecorator
+
+Component --o Decorator
