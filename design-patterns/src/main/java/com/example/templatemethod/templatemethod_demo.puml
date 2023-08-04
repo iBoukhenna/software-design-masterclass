@@ -1,0 +1,30 @@
+class TemplateDemo {
+}
+
+abstract class OrderTemplate {
+ + {abstract} doCheckout()
+ + {abstract} doPayment()
+ + {abstract} doReceipt()
+ + {abstract} doDelivery()
+ + processOrder()
+ + wrapGift()
+}
+
+class WebOrder {
+ + doCheckout()
+ + doPayment()
+ + doReceipt()
+ + doDelivery()
+}
+
+class StoreOrder {
+ + doCheckout()
+ + doPayment()
+ + doReceipt()
+ + doDelivery()
+}
+
+TemplateDemo --> OrderTemplate
+
+OrderTemplate <|-- StoreOrder
+OrderTemplate <|-- WebOrder

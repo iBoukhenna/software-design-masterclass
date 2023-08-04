@@ -1,0 +1,18 @@
+class Client {
+}
+
+abstract class AbstractBase {
+ + templateMethod()
+ + {abstract} methodOne()
+ + {abstract} methodTwo()
+}
+
+class ConcreteClass {
+ + methodOne()
+ + methodTwo()
+}
+
+
+Client --> AbstractBase
+
+AbstractBase <|-- ConcreteClass
