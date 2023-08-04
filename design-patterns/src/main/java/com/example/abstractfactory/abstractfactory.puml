@@ -1,0 +1,19 @@
+class Client {
+}
+
+interface AbstractFactory {
+ + createFactory()
+}
+
+class ConcreteFactory {
+ + createObject()
+}
+
+class ConcreteObject {
+}
+
+Client --> AbstractFactory
+
+AbstractFactory <|-- ConcreteFactory
+
+ConcreteFactory <|-- ConcreteObject

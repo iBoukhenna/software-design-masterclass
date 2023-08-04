@@ -1,0 +1,65 @@
+class AbstractFactoryDemo {
+}
+
+interface CreditCardFactory {
+ + getCreditCardFactory(int creditScore)
+ + {abstract} getCreditCard(CardType cardType)
+ + {abstract} getValidator(CardType cardType)
+}
+
+enum CardType {
+ GOLD
+ PLATINUM
+}
+
+class VisaFactory {
+ + getCreditCard(CardType cardType)
+ + getValidator(CardType cardType)
+}
+
+class AmexFactory {
+ + getCreditCard(CardType cardType)
+ + getValidator(CardType cardType)
+}
+
+class AmexGoldCreditCard {
+}
+
+class AmexPlatinumCreditCard {
+}
+
+class VisaGoldCreditCard {
+}
+
+class VisaBlackCreditCard {
+}
+
+interface Validator {
+ + isValid(CreditCard creditCard);
+}
+
+class AmexGoldValidator {
+ + isValid(CreditCard creditCard)
+}
+class AmexPlatinumValidator {
+ + isValid(CreditCard creditCard)
+}
+class VisaValidator {
+ + isValid(CreditCard creditCard)
+}
+
+
+AbstractFactoryDemo --> CreditCardFactory
+
+CreditCardFactory <|-- VisaFactory
+CreditCardFactory <|-- AmexFactory
+
+VisaFactory <|-- VisaGoldCreditCard
+VisaFactory <|-- VisaBlackCreditCard
+
+AmexFactory <|-- AmexGoldCreditCard
+AmexFactory <|-- AmexPlatinumCreditCard
+
+Validator <|-- AmexGoldValidator
+Validator <|-- AmexPlatinumValidator
+Validator <|-- VisaValidator 
