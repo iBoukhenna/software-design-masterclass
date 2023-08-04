@@ -1,0 +1,38 @@
+class BridgeDemo {
+}
+
+abstract class Printer {
+ + print(Formatter formatter)
+ + {abstract} getDetails()
+ + {abstract} getHeader()
+}
+
+class MoviePrinter {
+ + {abstract} getDetails()
+ + {abstract} getHeader()
+}
+
+interface Formatter {
+ + format(String header, List<Detail> details);
+}
+
+class Detail {
+ - String label
+ - String value
+}
+
+class HtmlFormatter {
+ + format(String header, List<Detail> details);
+}
+
+class PrintFormatter {
+ + format(String header, List<Detail> details);
+}
+
+BridgeDemo --> Printer
+Printer <|-- MoviePrinter
+
+Printer <.. Formatter
+
+Formatter <|-- HtmlFormatter
+Formatter <|-- PrintFormatter

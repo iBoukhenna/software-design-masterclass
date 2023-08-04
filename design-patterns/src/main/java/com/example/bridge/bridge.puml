@@ -1,0 +1,30 @@
+class Client {
+}
+
+interface Abstraction {
+ + operation()
+}
+
+class RefinedAbstraction {
+ + operation()
+}
+
+interface Implementor {
+ + operationImpl()
+}
+
+class ConcreteImplementorA {
+ + operationImpl()
+}
+
+class ConcreteImplementorB {
+ + operationImpl()
+}
+
+Client --> Abstraction
+Abstraction <|-- RefinedAbstraction
+
+Abstraction <.. Implementor
+
+Implementor <|-- ConcreteImplementorA
+Implementor <|-- ConcreteImplementorB
