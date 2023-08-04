@@ -1,0 +1,16 @@
+class Client {
+}
+
+class Facade {
+ + doSomething()
+}
+
+package Package1 {
+}
+
+package Package2 {
+}
+
+Client --> Facade
+Facade ..o Package1
+Facade ..o Package2

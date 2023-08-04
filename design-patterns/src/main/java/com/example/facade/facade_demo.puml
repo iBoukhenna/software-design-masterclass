@@ -1,0 +1,15 @@
+class FacadeJdbcDemo {
+}
+
+class JdbcFacade {
+ + JdbcFacade()
+ + createTable()
+ + insertIntoTable()
+ + getAddresses()
+}
+
+package DbSingleton {
+}
+
+FacadeJdbcDemo --> JdbcFacade
+JdbcFacade ..o DbSingleton
