@@ -18,6 +18,11 @@ class ToggleCommand {
  + execute()
 }
 
+class AllLightsCommand {
+ - List<Light> lights
+ + execute()
+}
+
 interface Command {
  + execute()
 }
@@ -29,11 +34,14 @@ class Switch {
 CommandDemo --> Light
 CommandDemo ..> OnCommand
 CommandDemo ..> ToggleCommand
+CommandDemo ..> AllLightsCommand
 
 Light --> OnCommand
 Light --> ToggleCommand
+Light --> AllLightsCommand
 
 Command <|-- OnCommand
 Command <|-- ToggleCommand
+Command <|-- AllLightsCommand
 
 Switch o--> Command 
