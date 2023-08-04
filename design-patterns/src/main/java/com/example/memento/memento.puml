@@ -1,0 +1,23 @@
+class Client {
+}
+
+class Memento {
+ - state
+ + getState()
+ + setState()
+}
+
+class Originator {
+ - state
+ + getMemento()
+ + setMemento()
+}
+
+class Caretaker {
+}
+
+Client --> Caretaker
+
+Caretaker o--> Memento
+
+Memento <.. Originator

@@ -1,0 +1,31 @@
+class MementoDemo {
+}
+
+class MementoEmployee {
+ - name
+ - phone
+ + getName()
+ + setName()
+ + getPhone()
+ + setPhone()
+}
+
+class Employee {
+ - name
+ - address
+ - phone
+ + save()
+ + revert(EmployeeMemento employeeMemento)
+}
+
+class Caretaker {
+ - Stack<EmployeeMemento> employeeHistory
+ + save(Employee)
+ + revert(Employee)
+}
+
+MementoDemo --> Caretaker
+
+Caretaker o--> MementoEmployee
+
+MementoEmployee <.. Employee
