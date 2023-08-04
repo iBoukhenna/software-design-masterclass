@@ -1,0 +1,10 @@
+class Client {
+}
+
+class Singleton {
+ - Singleton signleton
+ - Singleton()
+ + getInstance()
+}
+
+Client --> Singleton

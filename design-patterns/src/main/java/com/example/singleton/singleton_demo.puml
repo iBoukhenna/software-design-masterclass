@@ -1,0 +1,10 @@
+class DbSingletonDemo {
+}
+
+class DbSingleton {
+ - {static} DbSingleton instance;
+ - DbSingleton()
+ + getInstance()
+}
+
+DbSingletonDemo --> DbSingleton
