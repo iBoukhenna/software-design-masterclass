@@ -1,0 +1,28 @@
+class Client {
+}
+
+class Mediator {
+}
+
+class ConcreteMediator {
+}
+
+class Colleague {
+}
+
+class ConcreteColleague1 {
+}
+
+class ConcreteColleague2 {
+}
+
+Client --> Mediator
+
+Colleague --> Mediator
+
+Mediator <|-- ConcreteMediator
+Colleague <|-- ConcreteColleague1
+Colleague <|-- ConcreteColleague2
+
+ConcreteColleague1 <|-- ConcreteMediator
+ConcreteColleague2 <|-- ConcreteMediator

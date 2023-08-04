@@ -1,0 +1,35 @@
+class MediatorDemo {
+}
+
+class Mediator {
+ - List<Light> lights
+ + registerLight(Light light)
+ + turnOnAllLights()
+ + turnOffAllLights()
+}
+
+class Command {
+ + execute()
+}
+
+class TurnOffAllLightsCommand {
+ + execute()
+}
+
+class TurnOnAllLightsCommand {
+ + execute()
+}
+
+class Light {
+ - boolean isOn
+ - String location
+}
+
+MediatorDemo --> Mediator
+
+Command --> Mediator
+
+Command <|-- TurnOffAllLightsCommand
+Command <|-- TurnOnAllLightsCommand
+
+Mediator -- Light
