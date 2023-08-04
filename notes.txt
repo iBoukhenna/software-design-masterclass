@@ -1,0 +1,583 @@
+Behavior
+
+Chain of Responsibility
+    Decoupling of sender and receiver
+    Receiver contains refrence to next receiver
+    Promotes loose coupling
+    No Handler - OK
+
+    e.g., Spring Security Filter Chain
+
+    Handler is unique
+    Successor
+    Can utilize the Command
+    vs Command
+    Command also unique
+    Encapsulates function
+    Reversible or Trackable in nature
+
+Command
+    Encapsulate request as an Object
+    Object-oriented callback
+    Decouple sender from processor
+    Ofter used for "undo" functionality
+
+    e.g., Runnable
+
+    Object per Command
+    Command Interface
+    Execute Method
+    "Unexecute" method
+    Reflection
+
+    Object per Command
+    Class contains the "what"
+    Encapsulates the action
+    vs Strategy
+    Object per Strategy
+    Class contains the "how"
+    Encapsulate algorithm
+
+Interpreter
+    Represent grammar
+    Interpret a sentence
+    Map a domain
+    AST
+
+    e.g., Pattern
+
+    Complexity
+    Class per rule
+
+    Access to properties
+    Function as methods
+    Adding new functionality changes every variant
+    vs Visitor
+    Needs Observer functionality
+    Functionality found in one place
+    Adding new variant requires changing every visitor
+
+Iterator
+    Traverse a container
+    Doesn't expose underlying structure
+    Decouples algorithms
+    Sequential
+
+    e.g., Iterator
+
+    Interface based
+    Factory Method based
+    Independent but fail fast
+    Enumerators are fail safe
+    Iterator Concretelterator
+
+    Access to Index
+    Directional
+    Speed / Efficiency
+
+    Interface based
+    Algorithm is removed
+    No index
+    Concurrent modification
+    vs For loop
+    Traversal in client
+    Exposes an index
+    Doesn't change underlying Object
+    foreach syntax
+    Typically slower
+
+Mediator
+    Loose coupling
+    Well-defined but Complex
+    Reusable components
+    Hub / router
+
+    e.g., Timer
+
+    Interface based
+    Concrete Class
+    Minimizes inheritance
+    Mediator knows about colleagues
+    Mediator ConcreteMediator
+
+    Deity Object
+    Limit subclassing
+    Over or with Command
+
+    Defines interaction
+    Object decoupling
+    More specific
+    vs Observer
+    One-to Many
+    Object decoupling
+    More generic
+
+
+Memento
+    Restore Object to previous state
+    Externalize internal state
+    Undo/Rollback
+    Shields complex internals
+    
+    e.g., Date
+
+    Class based
+
+    Can be expensive
+    Deletes/History
+    Exposing information
+
+    State captured
+    Independent state
+    Caretaker / History
+    vs Command
+    Request captured
+    Independent request
+    History side benefit
+
+Observer
+    One to Many
+    Decoupled
+    Event Handling
+    Pub/Sub
+    MVC
+
+    e.g., Observer
+
+    Subject
+
+    Unexpected updates
+    Large sized consequences
+    What changed
+    Debugging difficult
+
+    One-to-Many
+    Decoupled
+    Broadcast Communication
+    vs Mediator
+    One-to-One-to-Many
+    Decoupled
+    Complex Communication
+
+State
+    Localize state behavior
+    State Object
+    Separates What from Where
+    OCP
+
+    e.g., JSF!
+
+    Abstract class / Interface
+    Class based
+    Context unaware
+
+    Know your States
+    More Classes
+    Keep login out of Context 
+    State change trigger
+
+    Interface based
+    Transitions
+    Class per State
+    vs Strategy
+    Interface based
+    Algorithms are Independent
+    Class per Algorithm
+
+Strategy
+    Eliminate conditional statements
+    Behavior encapsulated in Classes
+    Difficult to add new stratigies
+    client aware of strategies
+    Client chooses Strategy
+
+    e.g., Comparator
+
+    Abstract base class
+    Concrete class per strategy
+    Removes if/else conditionals
+    Strategies are independent
+
+    Client aware of Strategies
+    Increased number of Classes
+
+    Interface based
+    Algorithms are Independent
+    Class per Algorithm
+    vs State
+    Interface based
+    Transitions
+    Class per State
+
+Template Method
+    Code reuse
+    Common in libraries/frameworks
+    IoC
+    Algorithm emphasis
+
+    e.g., Collections#sort
+
+    Abstract base class
+    Base calls child
+    Hooks
+    Operations
+
+    Restrict access
+    Confusing hierarchy
+    Difficult Program Flow
+
+    Same algorithm
+    Class based
+    Compile time
+    vs Strategy
+    Algorithm per Strategy
+    Interface based
+    Run time
+
+Visitor
+    Separate Algorithm from Object
+    Adding new features
+    Maintain Open/Closed principle
+    Visitor changes
+
+    e.g., Element
+
+    Interface based
+    Visitor and Element
+    Element have visit method
+    Visitor knows every Element
+
+    Plan for adaptability
+    Indirection somewhet Confusing
+    Adapter Pattern
+
+    Visitor
+    Interface based
+    Externalized changes
+    Multiple visitors
+    vs Iterator
+    Interface based / Anonymous
+    Encapsulates
+    Singular
+
+
+Creational
+
+Singleton
+    Only one instance created
+    Guarantees control of a resource
+    lazily loaded
+    
+    e.g., Spring Beans
+
+    Class is resposible for lifecycle
+    Static is nature
+    Need to be thread safe
+    Private instance
+    Private constructor
+
+    Often overused
+    Difficult to unit test
+    If not careful not thread-safe
+    Sometimes confused for Factory
+    
+    Return same instance
+    One constructor method no args
+    No Interface
+    vs Factory
+    Returns various instance
+    Multiple constructors
+    Interface driven
+    Adaptable to environment more easily
+
+Builder
+    Handles complex constructors
+    Large number of parameters
+    Immutability
+    
+    e.g., StringBuilder
+
+    Flexibility over telescoping constructors
+    Static inner class
+    Calls appropriate constructor
+    Nagates the need for exposed setters
+
+    Immutable
+    Complexity
+
+    Handles complex constructors
+    No Interface required
+    Can be a separate class
+    Works with legacy code
+    vs Prototype
+    Implemented around a clone
+    Avoids calling complex constructors
+    Difficult to Implement in legacy code
+
+Prototype
+    Avoids costly creation
+    Avoids subclassing
+    Typically doesn't use "new"
+    Often utilizes an Interface
+    Usually implemented with a Registery
+
+    e.g., Object#clone
+
+    Clone / Clonneable
+    Can still utilize parameters fpr construction
+    Shallow vs Deep Copy
+
+    Sometimes not clean when to use
+
+    Lighter weight construction
+    Copy Constructor or Clone
+    Shallow or Deep
+    Copy of itself
+    vs Factory
+    Flexible Objects
+    Multiple constructors
+    Concrete instance
+    Fresh instance
+
+Factory
+    Doesn't expose instantiation logic
+    Defer to subclasses
+    Common interface
+    specified by architecture implemented by user
+
+    e.g., Calendar
+
+    Factory is responsible for lifecycle
+    Common interface
+    Concrete classes
+    Perameterized create method
+    
+    Complexity
+    Creation in subclass
+    Refactoring
+
+    
+    Returns various instance
+    Multiple constructors
+    Interface driven
+    subclasses
+    Adaptable to environment more easily
+    vs Singleton
+    Return same instance
+    One constructor method no args
+    No Interface
+    No Subclasses
+
+AbstractFactory
+    Factory of Factories
+    Factory of related Objects
+    Common Interface
+    Defer to Subclasses
+
+    e.g., DocumentBuilder
+
+    Groups Factories together
+    Factory is responsible for lifecycle
+    Common Interface
+    Concrete classes
+    Perameterized create method
+    Composition
+
+    Complexity
+    Runtime switch
+    Problem specific
+    Starts as a Factory
+
+    Implemented with FactoryHides the Factory
+    abstracts Environment
+    Build through Compisition
+    vs Factory
+    Returns various instance
+    Multiple constructors
+    Interface driven
+    subclasses
+    Adaptable to environment more easily
+
+
+Structural
+
+Adapter
+    Plug adaptor
+    Convert interface into another interface
+    Legacy
+    Translates requests
+
+    e.g., Arrays -> Lists
+
+    Client centric
+    Integrate new with old
+    Interface but not required
+    Adaptee can be the Implementation
+
+    Don't complicate
+    Multiple Adapters
+    Don't add functionality
+
+    Works after code is designed
+    Legacy
+    Retrofitted
+    Provides diffrent interface
+    vs Bridge
+    Designed upfront
+    Abstraction and Implementation vary
+    Built in advance
+    Both adapt multiple systems
+
+Bridge
+    Decouple Abstraction and Implementation
+    Encapsulation Composition inheritance
+    Changes in abstraction won't affect client
+    Details won't be right
+
+    e.g., Driver
+
+    Interfaces and Abstract classes
+    Composition over inheritance
+    More than Composition
+    Ecpect change from both sides
+
+    Increase Complexity
+    Conceptually difficult to plan
+    More than just OO
+    What goes where
+
+    Designed upfront
+    Abstraction and implementation vary
+    Build in advance
+    Complex
+    vs Adapter
+    Works after code is designed
+    Legacy
+    Retrofitted
+    Provides diffrent interface
+
+Composite
+    Components represent part or whole structure
+    Compose objects into tree structure
+    Individual object treated as a composite
+    Same operations applied on individual and composites
+
+    e.g., Component
+
+    Tree structured
+    Component
+    Leaf or composite same operations
+    Composite knows about child objects
+
+    Can overly simplfy system
+    Difficult to restrict
+    Implementation can possibly be costly
+
+    Tree structure
+    Leaf and composite have same interface
+    Unity between objects
+    vs Decorator
+    Contains another entity
+    Modifies behavior (adds)
+    Doesn't change underlying object
+
+Decorator
+    Also called a wrapper
+    Add behavior without affecting others
+    More than just inheritance
+    Single Responsibility principle
+    Compose behavior dynamically
+
+    e.g., InputStream
+
+    Inheritance based
+    Utilizes composition and inheritance (is a , has a)
+    Alternative to subclassing
+    Constructor requires instance from hierarchy
+
+    New class for every feature added
+    Multiple little objects
+    Ofter confused with simple inheritance
+
+    Contains another entity
+    Modifies behavior (adds)
+    Doesn't change underlying object
+    vs Composite
+    Tree structure
+    Leaf and composite have same interface
+    Unity between objects
+
+Facede
+    Make as API easier to use
+    Reduce dependencies on outside code
+    Simplify the interface or client usage
+    Usually a refactoring patter
+
+    e.g., URL
+
+    Class that utilizes composition
+    Shouldn't have a need for inheritance
+    Typically encompasses full lifecycle
+
+    Typically used to clean up code
+    Should think about API design
+    Flat problem/structure
+    The singleton of structural Pattern
+
+    Simplifies Interface
+    Works with composites
+    Cleaner API
+    vs Adapter
+    Also a refactoring pattern
+    Modifiew behavior (adds)
+    Provides a diffrent interface
+
+Flyweight
+    More efficient use of memory
+    Large number of similar objects
+    Immutable
+    Most of the object states can be extrinsic
+    
+    e.g., String
+
+    Pattern of patterns
+    Utilizes a Factory
+    Encompasses Creation and Structure
+
+    Complex pattern
+    Premature optimization
+    Must understand Factory
+    Not a graphical pattern
+
+    Memory Optimization
+    Optimization pattern
+    Immutable objects
+    vs Facade
+    Refactoring pattern
+    Simplified client
+    Provides a diffrent interface
+
+Proxy
+    Interface by wrapping
+    Can add functionality
+    Security, Simplicity, Remote, Cost
+    Proxy called to access read object
+
+    e.g., Proxy
+
+    Interface based
+    Interface and Implementation Class
+
+    Only one proxy
+    Another Abstraction
+    Similar to other pattern
+
+    Call add functionality but not its main purpose
+    Can only have one
+    Compile time
+    vs Decorator
+    Dynamically add functionality
+    Chained
+    Decorator points to its own type
+    Runtime
+
