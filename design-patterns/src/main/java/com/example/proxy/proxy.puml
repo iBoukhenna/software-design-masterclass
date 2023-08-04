@@ -1,0 +1,21 @@
+class Client {
+}
+
+class Subject {
+ + doAction()
+}
+
+class RealSubject {
+ + doAction()
+}
+
+class Proxy {
+ + doAction()
+}
+
+Client --> Subject
+Subject <|-- RealSubject
+
+Subject <|-- Proxy
+
+Proxy --> RealSubject

@@ -1,0 +1,31 @@
+class TwitterDemo {
+}
+
+class TwitterService {
+ + getTimeline(String screenName)
+ + postToTimeline(String screenName, String message)
+}
+
+class TwitterServiceStub {
+ + getTimeline(String screenName)
+ + postToTimeline(String screenName, String message)
+}
+
+class TwitterServiceImpl {
+ + getTimeline(String screenName)
+ + postToTimeline(String screenName, String message)
+}
+
+class SecurityProxy {
+ - Object obj
+ + newInstance(Object obj)
+ + invoke(Object proxy, Method m, Object[] args)
+}
+
+TwitterDemo --> TwitterService
+TwitterService <|-- TwitterServiceStub
+TwitterService <|-- TwitterServiceImpl
+TwitterService <|-- SecurityProxy
+
+SecurityProxy --> TwitterServiceStub
+SecurityProxy --> TwitterServiceImpl
