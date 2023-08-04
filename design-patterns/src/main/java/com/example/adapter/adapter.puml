@@ -1,0 +1,21 @@
+class AdapterDemo {
+}
+
+class Target {
+ + request()
+}
+
+interface Adapter {
+ + request()
+}
+
+class Adaptee {
+ + SpecificRequest()
+}
+
+Client --> Target
+
+Target <|-- Adapter
+
+Adaptee <-- Adapter
+

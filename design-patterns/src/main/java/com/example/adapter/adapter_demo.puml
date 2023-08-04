@@ -1,0 +1,59 @@
+class AdapterDemo {
+}
+
+class EmployeeClient {
+ + getEmployeeList()
+}
+
+interface Employee {
+ + getId()
+ + getFirstName()
+ + getLastName()
+ + getEmail()
+}
+
+class EmployeeDB {
+ + getId()
+ + getFirstName()
+ + getLastName()
+ + getEmail()
+}
+
+class EmployeeAdapterCSV {
+ + getId()
+ + getFirstName()
+ + getLastName()
+ + getEmail()
+}
+
+class EmployeeAdapterLdap {
+ + getId()
+ + getFirstName()
+ + getLastName()
+ + getEmail()
+}
+
+class EmployeeCSV {
+ + getId()
+ + getFirstName()
+ + getLastName()
+ + getEmailAddress()
+}
+
+class EmployeeLdap {
+ + getCn()
+ + getGivenName()
+ + getSurName()
+ + getMail()
+}
+
+AdapterDemo --> EmployeeClient
+
+EmployeeClient --> Employee
+
+Employee <|-- EmployeeDB
+Employee <|-- EmployeeAdapterCSV
+Employee <|-- EmployeeAdapterLdap
+
+EmployeeCSV <-- EmployeeAdapterCSV
+EmployeeLdap <-- EmployeeAdapterLdap
